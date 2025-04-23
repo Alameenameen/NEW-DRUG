@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Drug-Free | Choose Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+      
+    <style>
+        /* :root {
+            --primary-color: #3a5999;
+            --secondary-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        } */
+
+        :root {
+    --primary-color: #00C2FF;      /* Vibrant Cyan Blue - CTA, hope */
+    --secondary-color: #E63946;    /* Crimson Flame - danger alert */
+    --light-color: #F5F5F5;        /* Soft white - backgrounds */
+    --dark-color: #121212;         /* Charcoal Black - hero, footer */
+    --success-color: #00A676;      /* Therapeutic Green - recovery success */
+    --neutral-color: #B0BEC5;      /* Ash gray - text, borders */
+}
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+        }
+        
+        .hero {
+            position: relative;
+            color: white;
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        /* Video Background Styles */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .stats-section {
+            background-color: var(--light-color);
+            padding: 60px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        .info-section {
+            padding: 80px 0;
+        }
+        
+        .info-card {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .stories-section {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .story-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            background-color: white;
+        }
+        
+        .story-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .story-content {
+            padding: 20px;
+        }
+        
+        .help-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+        }
+        
+        .help-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 100%;
+        }
+        
+        .resource-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            height: 100%;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .resource-card:hover {
+            transform: scale(1.03);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2d4373;
+            border-color: #2d4373;
+        }
+        
+        .btn-danger {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+        }
+        
+        .navbar {
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar.scrolled {
+            background-color: var(--dark-color) !important;
+        }
+        
+        .counter-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .counter-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .highlight {
+            color: var(--secondary-color);
+        }
+        
+        /* Fallback styles for when video doesn't load */
+        .video-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+                min-height: 80vh;
+            }
+            
+            .counter {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .info-section, .stories-section, .help-section {
+                padding: 40px 0;
+            }
+            
+            /* Hide video on mobile for better performance */
+            .video-background video {
+                display: none;
+            }
+        }
+
+
+
+        /* ... */
+
+
+        /* Dark Theme Overrides for Info and Resource Cards */
+.info-card, .resource-card {
+    background-color: #1e1e1e; /* Dark background */
+    color: #f1f1f1; /* Light text */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-card:hover, .resource-card:hover {
+    transform: translateY(-5px);
+    background-color: #2c2c2c; /* Slightly lighter on hover */
+}
+
+.info-icon {
+    color: var(--secondary-color); /* You can keep this for accent */
+}
+
+.resource-card h4, .info-card h3 {
+    color: var(--secondary-color); /* Make titles pop with secondary color */
+}
+
+.resource-card ul li {
+    color: #dddddd;
+}
+
+.btn-outline-primary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+
+/* Dark Theme for Stats Section */
+.stats-section {
+    background-color: #111; /* Dark background */
+    color: #f0f0f0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.stat-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: #252525;
+    transform: translateY(-5px);
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-color); /* Accent color for highlight */
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    color: #f9f9f9;
+}
+
+.stat-card p {
+    font-size: 0.875rem;
+    color: #ccc;
+}
+
+.section-title {
+    color: #fff;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+/* === STORIES SECTION === */
+.stories-section {
+    background-color: #121212;
+    color: #f0f0f0;
+    padding: 60px 0;
+}
+
+.story-card {
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.05);
+}
+
+.story-card img {
+    border-bottom: 3px solid #e91e63; /* accent underline */
+}
+
+.story-content {
+    padding: 20px;
+}
+
+.story-content h3 {
+    color: #fff;
+}
+
+.story-content p {
+    color: #ccc;
+}
+
+/* === HELP SECTION === */
+.help-section {
+    background-color: #181818;
+    color: #f5f5f5;
+    padding: 60px 0;
+}
+
+.help-card {
+    background-color: #232323;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.help-card:hover {
+    background-color: #282828;
+    transform: translateY(-4px);
+}
+
+.help-card h3 {
+    color: #ff6b6b; /* Accent color */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.help-card p, 
+.help-card li, 
+.help-card form input {
+    color: #ccc;
+}
+
+.help-card form input::placeholder {
+    color: #888;
+}
+
+.help-card .btn-danger {
+    background-color: #e53935;
+    border: none;
+}
+
+.help-card .btn-danger:hover {
+    background-color: #c62828;
+}
+
+.section-title {
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+/* === RESOURCES SECTION === */
+#resources.info-section {
+    background-color: #0b1e33; /* dark navy blue */
+    color: #f0f4f8;
+    padding: 60px 0;
+}
+
+.section-title {
+    color: #ffffff;
+}
+
+/* Info Cards (Top 3 boxes) */
+.info-card {
+    background-color: #122c4a;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    color: #dce3eb;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    background-color: #17395b;
+}
+
+.info-card h3 {
+    color: #ffffff;
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    color: #4db8ff;
+    margin-bottom: 15px;
+}
+
+.info-card .btn-outline-primary {
+    color: #4db8ff;
+    border-color: #4db8ff;
+}
+
+.info-card .btn-outline-primary:hover {
+    background-color: #4db8ff;
+    color: #0b1e33;
+}
+
+/* Resource Cards (Opioids, Stimulants, Depressants) */
+.resource-card {
+    background-color: #16314e;
+    border-radius: 10px;
+    padding: 20px;
+    color: #e2eaf2;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.resource-card h4 {
+    color: #ffffff;
+    border-bottom: 1px solid #4db8ff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.resource-card ul li {
+    margin-bottom: 10px;
+}
+
+/* === NEWSLETTER SECTION === */
+.newsletter-section {
+    background: linear-gradient(135deg, #3a8787, #8ac7cf); /* Soft light teal gradient */
+    padding: 60px 0;
+    color: #053b4b;
+}
+
+.newsletter-section h2 {
+    color: #024d5e;
+    font-weight: 600;
+}
+
+.newsletter-section p {
+    color: #065766;
+}
+
+.newsletter-section .form-control {
+    border: 2px solid #09414d;
+    border-radius: 8px;
+}
+
+.newsletter-section .btn-primary {
+    background-color: #02353c;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-section .btn-primary:hover {
+    background-color: #013742;
+}
+
+
+.resource-card {
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Optional overlay for better text readability */
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.resource-card * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Specific backgrounds */
+.opioids-bg {
+    background-image: url('/images/1-d.jpg');
+}
+
+.stimulants-bg {
+    background-image: url('/images/2-d.jpg');
+}
+
+.depressants-bg {
+    background-image: url('/images/3-d.jpg');
+}
+
+
+
+    </style>
+
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shield-alt"></i> DrugFree Future
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#facts">Facts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stories">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#help">Get Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- <section id="home" class="hero">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Choose <span class="highlight">Life</span>, Not Drugs</h1>
+            <p class="lead mb-5">Together we can build a healthier, drug-free future for all communities</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#help" class="btn btn-danger btn-lg">Get Help Now</a>
+                <a href="#resources" class="btn btn-outline-light btn-lg">Learn More</a>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="counter-container">
+                        <p class="counter-title">Lives lost to drug overdose in the US this year</p>
+                        <div class="counter" id="overdoseCounter">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section id="home" class="hero">
+        <!-- Video Background -->
+        <div class="video-background">
+            <!-- Replace src with your actual video file. For demo using a placeholder -->
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="images/yt1z.net - Understanding the risks of mixing drugs ( 30) (1080p).mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                <div class="video-fallback"></div>
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="container text-center">
+                <h1 class="display-4 mb-4">Choose <span class="highlight">Life</span>, Not Drugs</h1>
+                <p class="lead mb-5">Together we can build a healthier, drug-free future for all communities</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#help" class="btn btn-danger btn-lg">Get Help Now</a>
+                    <a href="#resources" class="btn btn-outline-light btn-lg">Learn More</a>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="counter-container">
+                            <p class="counter-title">Lives lost to drug overdose in the US this year</p>
+                            <div class="counter" id="overdoseCounter">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Stats Section -->
+    <section id="facts" class="stats-section">
+        <div class="container">
+            <h2 class="text-center section-title">The Reality of Drug Abuse</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-exclamation-triangle fa-3x text-warning"></i>
+                        <div class="stat-number" data-target="106000">0</div>
+                        <h3 class="h5">Overdose Deaths</h3>
+                        <p class="small">Annual drug overdose deaths in the US</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-user-injured fa-3x text-danger"></i>
+                        <div class="stat-number" data-target="20">0</div>
+                        <h3 class="h5">Million People</h3>
+                        <p class="small">Struggling with substance use disorders</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line fa-3x text-primary"></i>
+                        <div class="stat-number" data-target="70">0</div>
+                        <h3 class="h5">Percent</h3>
+                        <p class="small">Of teens report pressure to use drugs</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign fa-3x text-success"></i>
+                        <div class="stat-number" data-target="700">0</div>
+                        <h3 class="h5">Billion Dollars</h3>
+                        <p class="small">Annual cost of substance abuse to society</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section id="resources" class="info-section">
+        <div class="container">
+            <h2 class="text-center section-title">Understanding The Dangers</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-brain info-icon"></i>
+                            <h3>Effect on Brain</h3>
+                        </div>
+                        <p>Drugs alter brain chemistry, affecting mood, perception, and behavior. With prolonged use, these changes can become permanent, leading to addiction and mental health disorders.</p>
+                        <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-heartbeat info-icon"></i>
+                            <h3>Physical Health</h3>
+                        </div>
+                        <p>Substance abuse can cause cardiovascular problems, respiratory issues, liver damage, weakened immune system, and increased risk of infectious diseases including HIV and hepatitis.</p>
+                        <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-users info-icon"></i>
+                            <h3>Social Impact</h3>
+                        </div>
+                        <p>Drug abuse can destroy relationships, lead to job loss, financial problems, legal issues, and social isolation. It affects not just the individual but entire families and communities.</p>
+                        <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3 class="mb-4">Common Types of Drugs and Their Effects</h3>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="resource-card opioids-bg">
+                        <h4>Opioids</h4>
+                        <p>Including heroin, fentanyl, and prescription pain relievers like oxycodone and morphine. These drugs slow breathing and can cause fatal overdoses.</p>
+                        <ul class="mt-3">
+                            <li>High risk of physical dependence</li>
+                            <li>Respiratory depression</li>
+                            <li>Leading cause of overdose deaths</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="resource-card stimulants-bg">
+                        <h4>Stimulants</h4>
+                        <p>Including cocaine, methamphetamine, and prescription drugs like Adderall. These drugs increase alertness, attention, and energy.</p>
+                        <ul class="mt-3">
+                            <li>Cardiovascular complications</li>
+                            <li>Psychological effects including paranoia</li>
+                            <li>High risk of addiction</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="resource-card depressants-bg">
+                        <h4>Depressants</h4>
+                        <p>Including alcohol, benzodiazepines, and barbiturates. These drugs slow brain activity and can cause coordination problems and drowsiness.</p>
+                        <ul class="mt-3">
+                            <li>Dangerous withdrawal symptoms</li>
+                            <li>Impaired coordination and judgment</li>
+                            <li>Increased risk of accidents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="stories-section">
+        <div class="container">
+            <h2 class="text-center section-title">Recovery Stories</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <img src="/images/drug1.jpg" alt="Recovery Story" class="img-fluid w-100">
+                        <div class="story-content">
+                            <h3>Michael's Journey</h3>
+                            <p class="text-muted">Recovering from Opioid Addiction</p>
+                            <p>"After 5 years battling addiction, I found the strength to seek help. Today, I'm 3 years sober and helping others find their path to recovery."</p>
+                            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#storyModal1">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <img src="/images/drug2.jpg" alt="Recovery Story" class="img-fluid w-100">
+                        <div class="story-content">
+                            <h3>Sarah's Path</h3>
+                            <p class="text-muted">Overcoming Alcohol Dependency</p>
+                            <p>"My addiction cost me my job and nearly my family. Through treatment and support, I rebuilt my life and repaired those relationships."</p>
+                            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#storyModal2">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <img src="/images/drug3.jpg" alt="Recovery Story" class="img-fluid w-100">
+                        <div class="story-content">
+                            <h3>David's Comeback</h3>
+                            <p class="text-muted">From Stimulant Addiction to Sobriety</p>
+                            <p>"I started using to cope with stress, but it quickly took control. Recovery was hard, but now I have purpose and joy in my life again."</p>
+                            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#storyModal3">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section id="help" class="help-section">
+        <div class="container">
+            <h2 class="text-center section-title">Get Help Now</h2>
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="lead">Whether you're struggling with addiction or concerned about a loved one, help is available 24/7.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="help-card">
+                        <h3><i class="fas fa-phone-alt me-2"></i> Hotlines</h3>
+                        <p>24/7 support is just a call away:</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><strong>National Helpline:</strong><br>1-800-662-4357</li>
+                            <li class="mb-3"><strong>Suicide Prevention:</strong><br>988 or 1-800-273-8255</li>
+                            <li><strong>Youth Helpline:</strong><br>1-800-448-3000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="help-card">
+                        <h3><i class="fas fa-map-marker-alt me-2"></i> Treatment Centers</h3>
+                        <p>Find treatment facilities near you:</p>
+                        <form class="mt-3">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Enter ZIP Code">
+                            </div>
+                            <button type="submit" class="btn btn-danger">Find Centers</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="help-card">
+                        <h3><i class="fas fa-hands-helping me-2"></i> Support Groups</h3>
+                        <p>Connect with others on the recovery journey:</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Narcotics Anonymous</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Alcoholics Anonymous</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> SMART Recovery</li>
+                            <li><i class="fas fa-check me-2"></i> Family Support Groups</li>
+                        </ul>
+                        <a href="#" class="btn btn-danger mt-3">Find a Meeting</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <!-- <section class="bg-light py-5"> -->
+
+        <section class="newsletter-section">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-4">Stay Informed</h2>
+                    <p class="mb-4">Sign up for our newsletter to receive the latest information on drug prevention, recovery resources, and community events.</p>
+                    <form class="row g-3 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" placeholder="Your Email Address">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3><i class="fas fa-shield-alt"></i> DrugFree Future</h3>
+                    <p>Empowering individuals and communities to live healthy, drug-free lives through education, support, and advocacy.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">About Us</a></li>
+                        <li><a href="#" class="text-white">Programs</a></li>
+                        <li><a href="#" class="text-white">Resources</a></li>
+                        <li><a href="#" class="text-white">News & Events</a></li>
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Contact Information</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Ernakulam</li>
+                        <li><i class="fas fa-phone me-2"></i>9061638482</li>
+                        <li><i class="fas fa-envelope me-2"></i> alluallu6002@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 DrugFree Future. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Help Button -->
+    <div class="floating-button">
+        <button class="btn btn-danger btn-lg rounded-circle shadow" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-hands-helping"></i>
+        </button>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Need Immediate Help?</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>If you or someone you know is in crisis, please call the National Helpline:</p>
+                    <div class="d-grid gap-2">
+                        <a href="tel:1-800-662-4357" class="btn btn-lg btn-outline-danger">
+                            <i class="fas fa-phone-alt me-2"></i> 1-800-662-4357
+                        </a>
+                    </div>
+                    <p class="mt-3">This service is available 24/7, 365 days a year, and provides information, support, and referrals to local treatment facilities, support groups, and community-based organizations.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Modals -->
+    <div class="modal fade" id="storyModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Michael's Journey to Recovery</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/images/drug1.jpg" alt="Michael" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                            <p>"My addiction started after a sports injury in college when I was prescribed opioid painkillers. What began as legitimate medical use quickly spiraled into dependence and eventually full-blown addiction when my prescriptions ran out and I turned to illicit sources.</p>
+                            <p>For five years, my life revolved around getting and using drugs. I lost my scholarship, dropped out of school, and pushed away family and friends who tried to help. It wasn't until I overdosed and nearly died that I realized I needed to change.</p>
+                            <p>Recovery wasn't a straight line. I tried and failed several times before finding a treatment program that worked for me, combining medication-assisted treatment with therapy and peer support. The hardest part was facing the damage I'd caused and rebuilding trust with my loved ones.</p>
+                            <p>Today, I'm three years sober and working as a peer recovery coach, helping others find their path to recovery. I've gone back to school and mended relationships with my family. Every day isn't perfect, but every day without drugs is a victory."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="storyModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sarah's Path to Sobriety</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/images/drug2.jpg" alt="Sarah" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                            <p>"I never thought I had a problem with alcohol. I was a successful marketing executive, mother of two, with what looked like a perfect life. But I was using alcohol to cope with stress, anxiety, and the pressure to be perfect.</p>
+                            <p>What started as a glass of wine after work eventually became a bottle, then more. I was hiding bottles around the house, drinking before meetings, and blacking out regularly. I lost my job after showing up intoxicated to an important client presentation.</p>
+                            <p>My husband threatened to leave and take our children if I didn't get help. That was my wake-up call. I entered a 30-day inpatient treatment program, followed by intensive outpatient therapy and regular AA meetings.</p>
+                            <p>Recovery taught me healthier ways to handle stress and emotions. I had to learn to be honest with myself and others. Rebuilding trust with my family took time, but through consistent sobriety and actions, not just promises, our relationships have grown stronger than before.</p>
+                            <p>Now four years sober, I run a small business and volunteer helping women in early recovery. I'm present for my family in ways I never could be while drinking. My story shows it's never too late to change course."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="storyModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">David's Comeback Story</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/images/drug3.jpg" alt="David" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                            <p>"I started using stimulants in my first year of law school to help me study longer hours. I thought I was in control – I was just using them to get ahead, not to party. But soon I needed them just to function normally.</p>
+                            <p>Within two years, I was using daily, mixing prescription stimulants with street drugs. I became paranoid, lost dramatic amounts of weight, and pushed away everyone who tried to help me. I was convinced I didn't have a problem – I was passing my classes and that's all that mattered.</p>
+                            <p>The breaking point came when I had a psychotic episode during a class presentation. I was hospitalized and faced with a choice: continue down this path or get help. With support from a few professors who saw my potential, I took a leave of absence and entered treatment.</p>
+                            <p>Recovery was the hardest thing I've ever done. I had to learn how to study, work, and cope with stress without drugs. I had to build a completely new lifestyle and social circle.</p>
+                            <p>Today, I've been clean for five years. I finished law school, not at the top of my class but as a healthy person. I now work as a public defender, often helping clients who struggle with substance use disorders. My experience helps me connect with them in a way others can't. There's purpose in my pain, and that's been healing."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navbar.classList.add('bg-dark');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.remove('bg-dark');
+            }
+        });
+        
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stats counters
+            const statCounters = document.querySelectorAll('.stat-number');
+            
+            const observerOptions = {
+                threshold: 0.5
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, observerOptions);
+            
+            statCounters.forEach(counter => {
+                observer.observe(counter);
+            });
+            
+            // Overdose counter
+            const overdoseCounter = document.getElementById('overdoseCounter');
+            const overdoseTarget = 29000; // Based on approximately 106,000 annual deaths
+            const today = new Date();
+            const startOfYear = new Date(today.getFullYear(), 0, 1);
+            const daysPassed = Math.floor((today - startOfYear) / (24 * 60 * 60 * 1000));
+            const estimatedDeaths = Math.round((overdoseTarget / 365) * daysPassed);
+            
+            let count = 0;
+            const overdoseInterval = setInterval(() => {
+                count += Math.ceil(estimatedDeaths / 100);
+                if (count >= estimatedDeaths) {
+                    count = estimatedDeaths;
+                    clearInterval(overdoseInterval);
+                }
+                overdoseCounter.innerText = count.toLocaleString();
+            }, 30);
+        });
+        
+        // Scroll to sections smoothly
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close navbar if open on mobile
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+        
+        // Add new fact randomly every minute to keep content dynamic
+        const facts = [
+            "40% of all drug users started before age 18.",
+            "Treatment can reduce drug use by 60% or more.",
+            "Every day, over 130 people die from opioid overdoses in the US.",
+            "Only about 10% of people with substance use disorders receive treatment.",
+            "Prescription drugs are the second most commonly abused substance after marijuana.",
+            "Teen drug use can affect brain development and lead to long-term cognitive issues.",
+            "Recovery rates improve significantly with strong support systems.",
+            "The risk of developing addiction is influenced by both genetic and environmental factors."
+        ];
+        
+        function addNewFact() {
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            const helpSection = document.querySelector('#help');
+            
+            const factAlert = document.createElement('div');
+            factAlert.className = 'alert alert-info alert-dismissible fade show mt-4';
+            factAlert.innerHTML = `
+                <strong>Did You Know?</strong> ${randomFact}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            helpSection.appendChild(factAlert);
+            
+            // Auto remove after 30 seconds
+            setTimeout(() => {
+                factAlert.remove();
+            }, 30000);
+        }
+        
+        // Add a fact after 60 seconds and then every 2 minutes
+        setTimeout(() => {
+            addNewFact();
+            setInterval(addNewFact, 120000);
+        }, 60000);
+    </script>
+</body>
+</html>
